@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Video, Gamepad2, Zap } from 'lucide-react';
+import { LayoutDashboard, Video, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
@@ -60,7 +60,7 @@ const Sidebar = () => {
         })}
       </nav>
 
-      <div className="p-6 mt-auto space-y-6">
+      <div className="p-6 mt-auto">
         <div className="glass rounded-2xl p-4 border-neon-cyan/20">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse shadow-[0_0_8px_var(--neon-cyan)]" />
@@ -69,16 +69,6 @@ const Sidebar = () => {
           <p className="text-[10px] text-slate-500 leading-relaxed">
             All systems nominal. AI processing nodes active.
           </p>
-        </div>
-
-        <div className="text-center">
-          <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] mb-1">Architect</p>
-          <div className="relative group inline-block">
-            <div className="absolute -inset-2 bg-gradient-to-r from-neon-cyan to-neon-violet blur opacity-0 group-hover:opacity-20 transition-opacity rounded-full" />
-            <span className="relative text-sm font-black text-white tracking-widest italic">
-              ⟨ OP CHOUDHARY ⟩
-            </span>
-          </div>
         </div>
       </div>
     </aside>

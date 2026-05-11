@@ -8,8 +8,9 @@ import Link from 'next/link';
 
 const DashboardPage = () => {
   const stats = [
+  const stats = [
     { name: 'AI Slices', value: '124', icon: <Video size={16} />, trend: '+12%', color: 'text-neon-cyan' },
-    { name: 'Game HighScore', value: '42,500', icon: <Gamepad2 size={16} />, trend: 'Top 5%', color: 'text-neon-pink' },
+    { name: 'GPU Clusters', value: 'Active', icon: <Zap size={16} />, trend: 'Healthy', color: 'text-neon-violet' },
     { name: 'Backend Latency', value: '45ms', icon: <Activity size={16} />, trend: 'Stable', color: 'text-emerald-400' },
   ];
 
@@ -21,14 +22,6 @@ const DashboardPage = () => {
       icon: <Video size={32} />,
       color: 'from-neon-cyan to-blue-600',
       tag: 'LOCAL AI'
-    },
-    {
-      name: 'Neon Puzzle',
-      description: 'Classic block puzzle with futuristic neon aesthetics.',
-      path: '/games/neon-puzzle',
-      icon: <Gamepad2 size={32} />,
-      color: 'from-neon-violet to-neon-pink',
-      tag: 'ARCADE'
     }
   ];
 
