@@ -209,8 +209,15 @@ const NeonPuzzle = () => {
     if (!item) return;
 
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const offsetY = e.clientY - rect.top;
+    const scaleFactor = 1 / 0.4; // Board cell is 2.5x larger than tray cell (0.4 scale)
+    
+    // Calculate local offset within the tray item
+    const localX = e.clientX - rect.left;
+    const localY = e.clientY - rect.top;
+
+    // Scale that offset to match the large dragged block
+    const offsetX = localX * scaleFactor;
+    const offsetY = localY * scaleFactor;
 
     setDraggedItem({
       index,
@@ -230,14 +237,14 @@ const NeonPuzzle = () => {
     // Smoothly track position
     setDraggedItem(prev => prev ? { ...prev, x: e.clientX, y: e.clientY } : null);
 
-    if (boardRef.current) {
+    if (boardRef.current && draggedItem) {
       const rect = boardRef.current.getBoundingClientRect();
       const cellTotal = cellSize + 1; // cell + gap
 
       // Calculate where the TOP-LEFT of the block is relative to the board
-      // Subtracting the pickup offset ensures the block stays glued to finger
+      // Use the exact same math as the visual motion.div (animate.x/y)
       const blockVisualX = e.clientX - draggedItem.offsetX;
-      const blockVisualY = e.clientY - draggedItem.offsetY;
+      const blockVisualY = e.clientY - draggedItem.offsetY - 50; // Match the -50 lift
 
       const boardX = blockVisualX - rect.left - 8; // Subtract board padding
       const boardY = blockVisualY - rect.top - 8;
@@ -455,10 +462,10 @@ const NeonPuzzle = () => {
               scale: 1, 
               opacity: 1,
               x: draggedItem.x - draggedItem.offsetX,
-              y: draggedItem.y - draggedItem.offsetY - 30 
+              y: draggedItem.y - draggedItem.offsetY - 50 // Lift above finger for mobile visibility
             }}
             exit={{ scale: 0.2, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.5 }}
+            transition={{ type: 'spring', damping: 30, stiffness: 400, mass: 0.5 }}
             className="fixed top-0 left-0 pointer-events-none z-[1000]"
             style={{ 
               gridTemplateColumns: `repeat(${tray[draggedItem.index]!.shape[0].length}, 1fr)`,
