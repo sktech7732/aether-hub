@@ -147,18 +147,22 @@ const NeonPuzzle = () => {
     setTray(newTray);
   }, []);
 
-  const checkGameOver = useCallback((currentBoard: (string | null)[][], currentTray: any[]) => {
+  const checkGameOver = useCallback((currentBoard: (string | null)[][], currentTray: (any | null)[]) => {
     const activeTrayItems = currentTray.filter(t => t !== null);
     if (activeTrayItems.length === 0) return false;
 
+    // Check each block in the tray
     for (const item of activeTrayItems) {
-      for (let r = 0; r < BOARD_SIZE; r++) {
-        for (let c = 0; c < BOARD_SIZE; c++) {
-          if (canPlace(item.shape, r, c, currentBoard)) return false;
+      // Try every possible position on the board
+      for (let r = 0; r <= BOARD_SIZE - item.shape.length; r++) {
+        for (let c = 0; c <= BOARD_SIZE - item.shape[0].length; c++) {
+          if (canPlace(item.shape, r, c, currentBoard)) {
+            return false; // Found a valid spot!
+          }
         }
       }
     }
-    return true;
+    return true; // No blocks in the tray fit anywhere
   }, []);
 
   const canPlace = (shape: number[][], r: number, c: number, currentBoard: (string | null)[][]) => {
