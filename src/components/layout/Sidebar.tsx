@@ -12,7 +12,6 @@ const Sidebar = () => {
   const navItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/dashboard' },
     { name: 'ClipForge', icon: <Video size={20} />, path: '/clip-forge' },
-    { name: 'Neon Puzzle', icon: <Gamepad2 size={20} />, path: '/games/neon-puzzle' },
   ];
 
   return (
