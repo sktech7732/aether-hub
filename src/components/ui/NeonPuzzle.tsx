@@ -125,8 +125,10 @@ const NeonPuzzle = () => {
     index: number, 
     x: number, 
     y: number, 
-    offsetX: number, // Pixel offset from top-left of block where user touched
-    offsetY: number 
+    offsetX: number, 
+    offsetY: number,
+    initialX: number, // Track absolute screen start
+    initialY: number 
   } | null>(null);
   const [hoverPos, setHoverPos] = useState<{ r: number, c: number } | null>(null);
   const [cellSize, setCellSize] = useState(0);
@@ -207,7 +209,6 @@ const NeonPuzzle = () => {
     if (!item) return;
 
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    // Calculate the exact offset from the top-left of the block
     const offsetX = e.clientX - rect.left;
     const offsetY = e.clientY - rect.top;
 
@@ -216,7 +217,9 @@ const NeonPuzzle = () => {
       x: e.clientX,
       y: e.clientY,
       offsetX,
-      offsetY
+      offsetY,
+      initialX: rect.left,
+      initialY: rect.top
     });
     audio.playSFX('pickup');
   };
@@ -442,12 +445,17 @@ const NeonPuzzle = () => {
       <AnimatePresence>
         {draggedItem && (
           <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
+            initial={{ 
+              scale: 0.4, 
+              opacity: 0,
+              x: draggedItem.initialX,
+              y: draggedItem.initialY
+            }}
             animate={{ 
               scale: 1, 
               opacity: 1,
               x: draggedItem.x - draggedItem.offsetX,
-              y: draggedItem.y - draggedItem.offsetY - 20 // Slight lift for visual clearance
+              y: draggedItem.y - draggedItem.offsetY - 30 
             }}
             exit={{ scale: 0.2, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.5 }}
