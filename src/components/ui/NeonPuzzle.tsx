@@ -31,9 +31,26 @@ const NeonPuzzle = () => {
   const [tray, setTray] = useState<( { shape: number[][], color: string } | null )[]>([]);
   const [draggedItem, setDraggedItem] = useState<{ index: number, x: number, y: number, initialX: number, initialY: number } | null>(null);
   const [hoverPos, setHoverPos] = useState<{ r: number, c: number } | null>(null);
+  const [cellSize, setCellSize] = useState(40); // Track actual pixel size of a board cell
 
   const audioRef = useRef<AudioContext | null>(null);
   const boardRef = useRef<HTMLDivElement>(null);
+
+  // Measure board cell size on mount and resize
+  useEffect(() => {
+    const updateSize = () => {
+      if (boardRef.current) {
+        const rect = boardRef.current.getBoundingClientRect();
+        // Account for padding (8px * 2) and gaps (1px * 7)
+        const pureWidth = rect.width - 16 - 7;
+        setCellSize(pureWidth / 8);
+      }
+    };
+    
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, [gameState]); // Re-run when switching to 'playing'
 
   // Initialize Audio
   const playSound = (type: 'click' | 'clear' | 'gameover') => {
@@ -290,25 +307,27 @@ const NeonPuzzle = () => {
           <AnimatePresence>
             {draggedItem && (
               <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
+                initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ 
-                  scale: 1.2, 
+                  scale: 1, 
                   opacity: 1,
-                  x: draggedItem.x - 60, // Offset to center on touch
-                  y: draggedItem.y - 100 
+                  // Center the block's first cell exactly under the cursor
+                  x: draggedItem.x - (cellSize / 2), 
+                  y: draggedItem.y - (cellSize * 1.5) // Offset slightly above touch point for visibility
                 }}
                 exit={{ scale: 0.5, opacity: 0 }}
                 className="fixed top-0 left-0 pointer-events-none z-[100]"
                 style={{ 
                   gridTemplateColumns: `repeat(${tray[draggedItem.index]!.shape[0].length}, 1fr)`,
                   display: 'grid',
-                  gap: '2px'
+                  gap: '1px'
                 }}
               >
                 {tray[draggedItem.index]!.shape.map((row, r) => row.map((val, c) => (
                   <div 
                     key={`${r}-${c}`} 
-                    className={`w-10 h-10 rounded-sm ${val ? COLOR_MAP[tray[draggedItem.index]!.color] : 'bg-transparent'}`} 
+                    className={`rounded-sm ${val ? COLOR_MAP[tray[draggedItem.index]!.color] : 'bg-transparent'}`} 
+                    style={{ width: `${cellSize}px`, height: `${cellSize}px` }}
                   />
                 )))}
               </motion.div>
