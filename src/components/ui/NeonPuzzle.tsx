@@ -112,13 +112,18 @@ const NeonPuzzle = () => {
   const getBoardPos = (clientX: number, clientY: number) => {
     if (!boardRef.current) return null;
     const rect = boardRef.current.getBoundingClientRect();
-    const cellSize = rect.width / BOARD_SIZE;
+    const cellW = (rect.width - 16 - 7) / 8; // Exact cell width (padding + gaps)
     
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
+    // Calculate the VISUAL top-left of the block based on the same offset used in motion.div
+    const visualX = clientX - (cellSize / 2);
+    const visualY = clientY - (cellSize * 1.5);
     
-    const c = Math.floor(x / cellSize);
-    const r = Math.floor(y / cellSize);
+    // Convert visual top-left to grid coordinates
+    const x = visualX - rect.left - 8; // Subtract board padding
+    const y = visualY - rect.top - 8;
+    
+    const c = Math.round(x / (cellW + 1)); // Account for 1px gap
+    const r = Math.round(y / (cellW + 1));
     
     if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) return { r, c };
     return null;
