@@ -8,7 +8,6 @@ import Link from 'next/link';
 
 const DashboardPage = () => {
   const stats = [
-  const stats = [
     { name: 'AI Slices', value: '124', icon: <Video size={16} />, trend: '+12%', color: 'text-neon-cyan' },
     { name: 'GPU Clusters', value: 'Active', icon: <Zap size={16} />, trend: 'Healthy', color: 'text-neon-violet' },
     { name: 'Backend Latency', value: '45ms', icon: <Activity size={16} />, trend: 'Stable', color: 'text-emerald-400' },
