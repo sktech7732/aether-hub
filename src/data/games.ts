@@ -98,5 +98,71 @@ export const GAMES: Game[] = [
     rating: 4.7,
     playCount: '1.4M',
     color: 'from-neon-pink to-rose-600'
+  },
+  {
+    id: 'cyber-drift',
+    title: 'Cyber Drift',
+    description: 'High-speed racing on a digital grid. Dodge obstacles and set records!',
+    category: 'Racing',
+    thumbnail: '/games/cyber-drift.png',
+    sourceUrl: 'https://poki.com/en/g/cyber-cars-punk-racing',
+    rating: 4.9,
+    playCount: '500K',
+    color: 'from-blue-400 to-indigo-600'
+  },
+  {
+    id: 'neon-breakout',
+    title: 'Neon Breakout',
+    description: 'Classic block-breaking action with futuristic glowing visuals.',
+    category: 'Arcade',
+    thumbnail: '/games/neon-breakout.png',
+    sourceUrl: 'https://ellisonleao.github.io/breakout/',
+    rating: 4.8,
+    playCount: '1.1M',
+    color: 'from-neon-cyan to-emerald-500'
+  },
+  {
+    id: 't-rex-cyber',
+    title: 'T-Rex Cyber',
+    description: 'A robotic dinosaur running through a synthwave desert.',
+    category: 'Arcade',
+    thumbnail: '/games/t-rex-cyber.png',
+    sourceUrl: 'https://wayou.github.io/t-rex-runner/',
+    rating: 4.6,
+    playCount: '2.3M',
+    color: 'from-orange-400 to-yellow-600'
+  },
+  {
+    id: 'sinuous-neon',
+    title: 'Sinuous Neon',
+    description: 'Navigate through a sea of red digital particles in deep space.',
+    category: 'Action',
+    thumbnail: '/games/sinuous-neon.png',
+    sourceUrl: 'https://www.sinuousgame.com/',
+    rating: 4.7,
+    playCount: '890K',
+    color: 'from-red-500 to-neon-pink'
+  },
+  {
+    id: 'pacman-retro',
+    title: 'Pacman Retro',
+    description: 'The ultimate arcade legend, reborn in the neon digital maze.',
+    category: 'Arcade',
+    thumbnail: '/games/pacman-retro.png',
+    sourceUrl: 'https://www.google.com/logos/2010/pacman10-i.html',
+    rating: 4.9,
+    playCount: '5.2M',
+    color: 'from-yellow-400 to-neon-cyan'
+  },
+  {
+    id: 'cyber-chess',
+    title: 'Cyber Chess',
+    description: 'Master the digital board with futuristic holographic strategy.',
+    category: 'Puzzle',
+    thumbnail: '/games/cyber-chess.png',
+    sourceUrl: 'https://lichess.org/embed/game/new?bg=dark',
+    rating: 4.8,
+    playCount: '300K',
+    color: 'from-neon-violet to-purple-800'
   }
 ];
