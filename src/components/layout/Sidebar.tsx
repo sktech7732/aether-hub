@@ -3,11 +3,22 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Video, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { LayoutDashboard, Video, Zap, Settings, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const [showSettings, setShowSettings] = React.useState(false);
+  const [tempUrl, setTempUrl] = React.useState("");
+
+  React.useEffect(() => {
+    setTempUrl(localStorage.getItem('clipforge_backend_url') || "http://localhost:3001");
+  }, []);
+
+  const saveUrl = () => {
+    localStorage.setItem('clipforge_backend_url', tempUrl);
+    window.location.reload(); // Refresh to update hook
+  };
 
   const navItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/dashboard' },
@@ -60,15 +71,57 @@ const Sidebar = () => {
         })}
       </nav>
 
-      <div className="p-6 mt-auto">
+      <div className="p-6 mt-auto space-y-4">
         <div className="glass rounded-2xl p-4 border-neon-cyan/20">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse shadow-[0_0_8px_var(--neon-cyan)]" />
-            <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">System Status</span>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse shadow-[0_0_8px_var(--neon-cyan)]" />
+              <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">System Status</span>
+            </div>
+            <button 
+              onClick={() => setShowSettings(!showSettings)}
+              className="text-slate-500 hover:text-neon-cyan transition-colors"
+            >
+              <Settings size={14} />
+            </button>
           </div>
-          <p className="text-[10px] text-slate-500 leading-relaxed">
-            All systems nominal. AI processing nodes active.
-          </p>
+          
+          <AnimatePresence>
+            {showSettings ? (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="space-y-3 overflow-hidden"
+              >
+                <div className="space-y-1">
+                  <label className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Backend Node IP</label>
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      value={tempUrl}
+                      onChange={(e) => setTempUrl(e.target.value)}
+                      placeholder="http://192.168.1.5:3001"
+                      className="flex-1 bg-black/40 border border-white/10 rounded-lg px-2 py-1 text-[10px] text-white focus:border-neon-cyan outline-none"
+                    />
+                    <button 
+                      onClick={saveUrl}
+                      className="bg-neon-cyan/20 hover:bg-neon-cyan/40 text-neon-cyan p-1 rounded-lg transition-all"
+                    >
+                      <Zap size={12} />
+                    </button>
+                  </div>
+                </div>
+                <p className="text-[9px] text-slate-600 leading-tight">
+                  Enter your PC's IP or Ngrok URL for remote access.
+                </p>
+              </motion.div>
+            ) : (
+              <p className="text-[10px] text-slate-500 leading-relaxed">
+                All systems nominal. AI processing nodes active.
+              </p>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </aside>
