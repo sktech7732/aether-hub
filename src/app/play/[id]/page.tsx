@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { GAMES } from '@/data/games';
 import { motion } from 'framer-motion';
-import { Maximize2, RotateCcw, Heart, Share2, ArrowLeft, Gamepad2 } from 'lucide-react';
+import { Maximize2, RotateCcw, Heart, Share2, ArrowLeft, Gamepad2, Star } from 'lucide-react';
 import Link from 'next/link';
 
 const PlayPage = () => {
