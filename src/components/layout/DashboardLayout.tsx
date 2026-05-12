@@ -3,7 +3,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
-import SignatureFooter from './SignatureFooter';
+import AdBanner from '@/components/ads/AdBanner';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
@@ -20,6 +20,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
       <main className="flex-1 md:ml-64 relative min-h-screen pt-20 md:pt-0">
         <div className="max-w-7xl mx-auto flex flex-col min-h-screen">
+          <AdBanner />
           <div className="flex-1 p-6 md:p-10">
             <AnimatePresence mode="wait">
               <motion.div

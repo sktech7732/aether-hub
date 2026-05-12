@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import { PROP_AD_SCRIPT_URL } from '@/config/ads';
+
 import { motion } from 'framer-motion';
 
 const SignatureFooter = () => {
@@ -24,9 +25,11 @@ const SignatureFooter = () => {
           </motion.div>
         </div>
         
-        <p className="mt-4 text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">
-          © 2026 AETHERHUB • ALL RIGHTS RESERVED
-        </p>
+        {/* PropellerAds Banner */}
+        <div className="flex justify-center my-4">
+          <script async src={PROP_AD_SCRIPT_URL}></script>
+        </div>
+
       </div>
     </footer>
   );
