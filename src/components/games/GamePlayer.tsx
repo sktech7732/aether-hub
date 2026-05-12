@@ -8,6 +8,10 @@ import { Game } from '@/data/games';
 import Link from 'next/link';
 import Neon2048 from './local/Neon2048';
 import NeonSnake from './local/NeonSnake';
+import NeonBreakout from './local/NeonBreakout';
+import CyberBird from './local/CyberBird';
+import NeonTetris from './local/NeonTetris';
+import NeonTRex from './local/NeonTRex';
 
 const GamePlayer = ({ game }: { game: Game }) => {
   const router = useRouter();
@@ -48,6 +52,14 @@ const GamePlayer = ({ game }: { game: Game }) => {
             <Neon2048 />
           ) : game.localId === 'snake' ? (
             <NeonSnake />
+          ) : game.localId === 'breakout' ? (
+            <NeonBreakout />
+          ) : game.localId === 'bird' ? (
+            <CyberBird />
+          ) : game.localId === 'tetris' ? (
+            <NeonTetris />
+          ) : game.localId === 'trex' ? (
+            <NeonTRex />
           ) : (
             <>
               <iframe 

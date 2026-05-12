@@ -8,7 +8,7 @@ export interface Game {
   rating: number;
   playCount: string;
   color: string;
-  localId?: '2048' | 'snake';
+  localId?: '2048' | 'snake' | 'breakout' | 'bird' | 'tetris' | 'trex';
 }
 
 export const GAMES: Game[] = [
@@ -21,7 +21,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://hextris.io/',
     rating: 4.8,
     playCount: '1.2M',
-    color: 'from-neon-cyan to-blue-600'
+    color: 'from-neon-cyan to-blue-600',
+    localId: 'tetris'
   },
   {
     id: '2048-neon',
@@ -36,7 +37,7 @@ export const GAMES: Game[] = [
     localId: '2048'
   },
   {
-    id: 'clumsy-bird',
+    id: 'cyber-bird',
     title: 'Cyber Bird',
     description: 'Navigate through the neon pipes in this addictive endless flyer.',
     category: 'Arcade',
@@ -44,7 +45,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://ellisonleao.github.io/clumsy-bird/',
     rating: 4.5,
     playCount: '800K',
-    color: 'from-yellow-400 to-orange-600'
+    color: 'from-yellow-400 to-orange-600',
+    localId: 'bird'
   },
   {
     id: 'tower-master',
@@ -122,7 +124,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://ellisonleao.github.io/breakout/',
     rating: 4.8,
     playCount: '1.1M',
-    color: 'from-neon-cyan to-emerald-500'
+    color: 'from-neon-cyan to-emerald-500',
+    localId: 'breakout'
   },
   {
     id: 't-rex-cyber',
@@ -133,7 +136,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://wayou.github.io/t-rex-runner/',
     rating: 4.6,
     playCount: '2.3M',
-    color: 'from-orange-400 to-yellow-600'
+    color: 'from-orange-400 to-yellow-600',
+    localId: 'trex'
   },
   {
     id: 'sinuous-neon',
