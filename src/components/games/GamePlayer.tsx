@@ -12,6 +12,10 @@ import NeonBreakout from './local/NeonBreakout';
 import CyberBird from './local/CyberBird';
 import NeonTetris from './local/NeonTetris';
 import NeonTRex from './local/NeonTRex';
+import NeonClicker from './local/NeonClicker';
+import NeonJump from './local/NeonJump';
+import NeonDodge from './local/NeonDodge';
+import NeonMemory from './local/NeonMemory';
 
 const GamePlayer = ({ game }: { game: Game }) => {
   const router = useRouter();
@@ -60,6 +64,14 @@ const GamePlayer = ({ game }: { game: Game }) => {
             <NeonTetris />
           ) : game.localId === 'trex' ? (
             <NeonTRex />
+          ) : game.localId === 'clicker' ? (
+            <NeonClicker />
+          ) : game.localId === 'jump' ? (
+            <NeonJump />
+          ) : game.localId === 'dodge' ? (
+            <NeonDodge />
+          ) : game.localId === 'memory' ? (
+            <NeonMemory />
           ) : (
             <>
               <iframe 
