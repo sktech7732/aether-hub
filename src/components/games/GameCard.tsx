@@ -13,14 +13,17 @@ const GameCard = ({ game }: { game: Game }) => {
         whileHover={{ y: -8 }}
         className="relative overflow-hidden rounded-[2rem] glass border border-white/5 group-hover:border-white/20 transition-all duration-500"
       >
-        {/* Thumbnail Image */}
-        <div className="relative aspect-square overflow-hidden">
+        {/* Thumbnail Image / Logo */}
+        <div className="relative aspect-square overflow-hidden flex items-center justify-center p-8 bg-black/40">
           <img 
             src={game.thumbnail} 
             alt={game.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="w-full h-auto max-h-[80%] object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
+          
+          {/* Decorative Grid Pattern */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none" 
+               style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
           
           {/* Category Tag */}
           <div className="absolute top-4 right-4 glass px-3 py-1 rounded-full border border-white/10 text-[10px] font-black tracking-widest text-white/70 uppercase">

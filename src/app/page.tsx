@@ -6,6 +6,8 @@ import GameGrid from '@/components/games/GameGrid';
 import { motion } from 'framer-motion';
 import { Zap, TrendingUp, Sparkles } from 'lucide-react';
 
+import RealTimeCounter from '@/components/ui/RealTimeCounter';
+
 export default function ArcadeNexus() {
   return (
     <DashboardLayout>
@@ -47,7 +49,7 @@ export default function ArcadeNexus() {
       <section className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
           { label: 'Network Uptime', value: '99.9%', color: 'text-emerald-400' },
-          { label: 'Global Players', value: '5.2M', color: 'text-neon-cyan' },
+          { label: 'Global Players', value: <RealTimeCounter baseValue={5240890} />, color: 'text-neon-cyan' },
           { label: 'Active Modules', value: '120+', color: 'text-neon-violet' },
         ].map((stat) => (
           <div key={stat.label} className="glass p-8 rounded-[2rem] border-white/5 text-center group hover:border-white/10 transition-all">
