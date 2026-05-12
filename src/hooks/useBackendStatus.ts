@@ -50,23 +50,6 @@ export const useBackendStatus = () => {
       clearTimeout(id);
     }
   }, [backendUrl]);
-        method: 'GET',
-        signal: controller.signal
-      });
-      clearTimeout(id);
-      
-      if (response.ok) {
-        setIsOnline(true);
-      } else {
-        setIsOnline(false);
-      }
-    } catch (error) {
-      console.log("Backend check failed:", error);
-      setIsOnline(false);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
 
   useEffect(() => {
     checkStatus();
