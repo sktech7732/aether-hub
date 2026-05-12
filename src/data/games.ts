@@ -8,6 +8,7 @@ export interface Game {
   rating: number;
   playCount: string;
   color: string;
+  localId?: '2048' | 'snake';
 }
 
 export const GAMES: Game[] = [
@@ -31,7 +32,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://gabrielecirulli.github.io/2048/',
     rating: 4.9,
     playCount: '2.5M',
-    color: 'from-neon-violet to-neon-pink'
+    color: 'from-neon-violet to-neon-pink',
+    localId: '2048'
   },
   {
     id: 'clumsy-bird',
@@ -64,7 +66,8 @@ export const GAMES: Game[] = [
     sourceUrl: 'https://poki.com/en/g/block-the-pig', // Placeholder
     rating: 4.6,
     playCount: '950K',
-    color: 'from-neon-cyan to-emerald-500'
+    color: 'from-neon-cyan to-emerald-500',
+    localId: 'snake'
   },
   {
     id: 'space-warp',

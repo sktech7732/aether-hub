@@ -6,6 +6,8 @@ import { Maximize2, RotateCcw, Heart, Share2, ArrowLeft, Gamepad2, Star } from '
 import { useRouter } from 'next/navigation';
 import { Game } from '@/data/games';
 import Link from 'next/link';
+import Neon2048 from './local/Neon2048';
+import NeonSnake from './local/NeonSnake';
 
 const GamePlayer = ({ game }: { game: Game }) => {
   const router = useRouter();
@@ -42,17 +44,25 @@ const GamePlayer = ({ game }: { game: Game }) => {
           relative aspect-video rounded-[2.5rem] overflow-hidden glass border border-white/10 shadow-2xl shadow-black/50
           ${isFullscreen ? 'fixed inset-0 z-[100] rounded-none' : ''}
         `}>
-          <iframe 
-            id="game-frame"
-            src={game.sourceUrl} 
-            className="w-full h-full border-none"
-            title={game.title}
-            allow="fullscreen"
-          />
-          
-          <div className="absolute inset-0 bg-[#020617] -z-10 flex items-center justify-center">
-            <div className="w-12 h-12 border-4 border-neon-cyan/20 border-t-neon-cyan rounded-full animate-spin" />
-          </div>
+          {game.localId === '2048' ? (
+            <Neon2048 />
+          ) : game.localId === 'snake' ? (
+            <NeonSnake />
+          ) : (
+            <>
+              <iframe 
+                id="game-frame"
+                src={game.sourceUrl} 
+                className="w-full h-full border-none"
+                title={game.title}
+                allow="fullscreen"
+              />
+              
+              <div className="absolute inset-0 bg-[#020617] -z-10 flex items-center justify-center">
+                <div className="w-12 h-12 border-4 border-neon-cyan/20 border-t-neon-cyan rounded-full animate-spin" />
+              </div>
+            </>
+          )}
         </div>
 
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-2xl flex items-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
