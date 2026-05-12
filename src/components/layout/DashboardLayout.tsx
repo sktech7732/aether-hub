@@ -4,6 +4,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
 import AdBanner from '@/components/ads/AdBanner';
+import SignatureFooter from './SignatureFooter';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
