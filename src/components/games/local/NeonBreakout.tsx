@@ -171,7 +171,7 @@ const NeonBreakout = () => {
       {/* Ball */}
       <motion.div 
         animate={{ x: ballPos.x - BALL_RADIUS, y: ballPos.y - BALL_RADIUS }}
-        transition={{ type: 'just' }}
+        transition={{ duration: 0 }}
         className="absolute w-4 h-4 bg-white rounded-full shadow-[0_0_15px_#fff] z-10"
       />
 

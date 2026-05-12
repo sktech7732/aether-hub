@@ -137,7 +137,7 @@ const CyberBird = () => {
       {/* Bird */}
       <motion.div 
         animate={{ y: birdY, rotate: birdVel * 3 }}
-        transition={{ type: 'just' }}
+        transition={{ duration: 0.1 }}
         className="absolute left-[100px] w-10 h-8 z-20"
       >
         <div className="w-full h-full bg-neon-cyan rounded-lg shadow-[0_0_15px_#06b6d4] relative">

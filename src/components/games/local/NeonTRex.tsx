@@ -116,7 +116,7 @@ const NeonTRex = () => {
       {/* Dino */}
       <motion.div 
         animate={{ y: dinoY }}
-        transition={{ type: 'just' }}
+        transition={{ duration: 0 }}
         className="absolute left-[100px] bottom-20 w-12 h-12 z-20"
       >
         <div className="w-full h-full bg-emerald-400 rounded-md shadow-[0_0_15px_#4ade80] flex items-center justify-center">
