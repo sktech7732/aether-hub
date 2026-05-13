@@ -39,8 +39,9 @@ export default function RootLayout({
         <Script
           id="monetag-ads"
           strategy="afterInteractive"
-          src="https://bountiesworks.com/tag.min.js"
-          data-zone="3330237"
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="239048"
+          data-cfasync="false"
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
