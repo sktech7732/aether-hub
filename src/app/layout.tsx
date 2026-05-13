@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "A premium unified platform for AI video processing and futuristic gaming.",
   other: {
     // Monetag site verification
-    monetag: "3330237",
+    monetag: "61b182f4a72e0a91030a3028343e6e7f",
   },
 };
 
@@ -34,7 +34,7 @@ export default function RootLayout({
     >
       <head>
         {/* Monetag site verification */}
-        <meta name="monetag" content="3330237" />
+        <meta name="monetag" content="61b182f4a72e0a91030a3028343e6e7f" />
         {/* Monetag ad script */}
         <Script
           id="monetag-ads"
