@@ -19,7 +19,7 @@ export const HorizontalAd = () => {
 
 export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
   return (
-    <div className={`hidden xl:flex fixed top-32 ${side === 'left' ? 'left-4' : 'right-4'} w-[160px] h-[600px] bg-white/5 border border-white/10 rounded-3xl items-center justify-center overflow-hidden z-40`}>
+    <div className={`hidden 2xl:flex fixed top-48 ${side === 'left' ? 'left-4' : 'right-4'} w-[160px] h-[600px] bg-white/5 border border-white/10 rounded-3xl items-center justify-center overflow-hidden z-40 shadow-2xl shadow-black`}>
       <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-neon-violet/5 opacity-50" />
       <script async src={PROP_AD_SCRIPT_URL}></script>
       <div className="relative z-10 text-[9px] font-bold text-slate-700 uppercase tracking-widest rotate-90 whitespace-nowrap">

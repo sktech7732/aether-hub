@@ -103,7 +103,7 @@ const NewsGrid = ({ category }: NewsGridProps) => {
             {news.map((article, idx) => (
               <React.Fragment key={article.link + idx}>
                 <NewsCard article={article} />
-                {(idx + 1) % 2 === 0 && <HorizontalAd />}
+                {(idx + 1) % 6 === 0 && <HorizontalAd />}
               </React.Fragment>
             ))}
           </AnimatePresence>
