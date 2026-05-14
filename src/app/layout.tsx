@@ -36,13 +36,7 @@ export default function RootLayout({
         {/* Monetag site verification */}
         <meta name="monetag" content="61b182f4a72e0a91030a3028343e6e7f" />
         {/* Global Monetag Script */}
-        <Script
-          id="monetag-global"
-          strategy="afterInteractive"
-          src="https://quge5.com/88/tag.min.js"
-          data-zone="11002427"
-          data-cfasync="false"
-        />
+        <script src="https://alwingulla.com/pfe/current/tag.min.js?z=11002426" data-cfasync="false" async></script>
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

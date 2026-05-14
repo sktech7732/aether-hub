@@ -2,10 +2,7 @@
 
 import React from 'react';
 
-// Using the new In-Page Push Zone ID found in the dashboard
-const BANNER_ZONE_ID = "11006892";
-const AD_SCRIPT_URL = "https://quge5.com/88/tag.min.js";
-
+// Using the EXACT Magnificent tag script from the dashboard for In-Page Push Banners
 export const HorizontalAd = () => {
   return (
     <div className="col-span-full w-full py-4">
@@ -14,7 +11,7 @@ export const HorizontalAd = () => {
         <div 
           className="relative z-10 w-full flex justify-center"
           dangerouslySetInnerHTML={{
-            __html: `<script src="${AD_SCRIPT_URL}" data-zone="${BANNER_ZONE_ID}" async></script>`
+            __html: `<script src="https://quge5.com/pfe/current/tag.min.js?z=11006892" data-cfasync="false" async></script>`
           }}
         />
         <div className="absolute top-2 right-4 text-[8px] font-bold text-slate-700 uppercase tracking-widest z-0 opacity-50">
@@ -34,7 +31,7 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
       <div 
         className="relative z-10 w-full flex justify-center"
         dangerouslySetInnerHTML={{
-          __html: `<script src="${AD_SCRIPT_URL}" data-zone="${BANNER_ZONE_ID}" async></script>`
+          __html: `<script src="https://quge5.com/pfe/current/tag.min.js?z=11006892" data-cfasync="false" async></script>`
         }}
       />
       <div className="relative z-0 text-[9px] font-bold text-slate-700 uppercase tracking-widest rotate-90 whitespace-nowrap opacity-30">
