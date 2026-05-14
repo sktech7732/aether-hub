@@ -19,23 +19,33 @@ const GlobalNav = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-[100] px-4 py-3">
       <div className="max-w-7xl mx-auto glass rounded-2xl border border-white/10 px-4 py-2 flex justify-between items-center backdrop-blur-xl">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Newspaper className="text-white" size={16} />
-          </div>
-          <span className="text-lg font-black tracking-tighter text-white">
-            AETHER<span className="text-neon-cyan">NEWS</span>
-          </span>
-        </Link>
-
-        <div className="flex items-center gap-3">
-          <WeatherWidget />
+        <div className="flex items-center gap-4">
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-neon-cyan/20 transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+          
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Newspaper className="text-white" size={16} />
+            </div>
+            <span className="text-lg font-black tracking-tighter text-white hidden sm:inline-block">
+              AETHER<span className="text-neon-cyan">NEWS</span>
+            </span>
+          </Link>
+
+          <div className="hidden md:block h-6 w-px bg-white/10 mx-1" />
+          
+          <WeatherWidget />
+        </div>
+
+        <div className="flex items-center gap-4">
+          {/* Right side can be empty or used for profile/search later */}
+          <div className="px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-[10px] font-bold text-neon-cyan uppercase tracking-widest hidden sm:block">
+            Live Feed
+          </div>
         </div>
       </div>
 
