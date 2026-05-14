@@ -35,6 +35,14 @@ export default function RootLayout({
       <head>
         {/* Monetag site verification */}
         <meta name="monetag" content="61b182f4a72e0a91030a3028343e6e7f" />
+        {/* Global Monetag Script */}
+        <Script
+          id="monetag-global"
+          strategy="afterInteractive"
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="239048"
+          data-cfasync="false"
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
