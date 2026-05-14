@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AetherHub | Cyberpunk AI Tools",
-  description: "A premium unified platform for AI video processing and futuristic gaming.",
+  title: "Aether News | Cyberpunk Tech Updates",
+  description: "Real-time intelligence from the frontier of technology, AI, and the automotive sector.",
   other: {
     // Monetag site verification
     monetag: "61b182f4a72e0a91030a3028343e6e7f",

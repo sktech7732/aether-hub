@@ -1,63 +1,61 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import GameGrid from '@/components/games/GameGrid';
+import CategoryBar from '@/components/ui/CategoryBar';
+import NewsGrid from '@/components/ui/NewsGrid';
+import { Newspaper, Zap, TrendingUp, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Zap, TrendingUp, Sparkles } from 'lucide-react';
 
-import RealTimeCounter from '@/components/ui/RealTimeCounter';
+export default function AetherNews() {
+  const [activeCategory, setActiveCategory] = useState('tech');
 
-export default function ArcadeNexus() {
   return (
     <DashboardLayout>
-      <header className="mb-12">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1 }}
-        >
-          <div className="flex items-center gap-2 text-neon-cyan mb-2">
-            <Sparkles size={14} className="fill-neon-cyan" />
-            <span className="text-xs font-black uppercase tracking-[0.2em]">Featured Release</span>
+      <div className="space-y-10">
+        {/* Hero Section */}
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-black border border-white/5 p-8 md:p-12">
+          <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,var(--neon-cyan),transparent_70%)]" />
           </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6">
-            ARCADE<span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-violet">NEXUS.</span>
-          </h1>
-          <p className="text-slate-400 max-w-2xl text-lg font-medium leading-relaxed">
-            The premium gateway to futuristic browser gaming. High-performance, 
-            zero-friction, and 100% immersive arcade modules.
-          </p>
-        </motion.div>
-      </header>
+          
+          <div className="relative z-10 max-w-3xl">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 flex items-center gap-2">
+                <Sparkles size={12} className="text-neon-cyan fill-neon-cyan" />
+                <span className="text-[10px] font-black text-neon-cyan uppercase tracking-[0.2em]">Global Intelligence Feed</span>
+              </div>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter mb-6 uppercase">
+              AETHER <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-violet">NEWS NETWORK.</span>
+            </h1>
+            
+            <p className="text-slate-400 text-lg md:text-xl font-medium leading-relaxed mb-8 max-w-2xl">
+              Real-time intelligence from the frontier of technology, AI, and the automotive sector. Decoded and delivered instantly.
+            </p>
 
-      {/* Hero / Trending Section */}
-      <section className="mb-16">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="p-2 rounded-lg bg-neon-cyan/10 text-neon-cyan">
-            <TrendingUp size={20} />
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Feed Status: Online</span>
+              </div>
+            </div>
           </div>
-          <h2 className="text-2xl font-black text-white uppercase tracking-tighter italic">
-            Trending Modules
-          </h2>
         </div>
-        
-        <GameGrid />
-      </section>
 
-      {/* Platform Stats / Info Footer */}
-      <section className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          { label: 'Network Uptime', value: '99.9%', color: 'text-emerald-400' },
-          { label: 'Global Players', value: <RealTimeCounter baseValue={5240890} />, color: 'text-neon-cyan' },
-          { label: 'Active Modules', value: '120+', color: 'text-neon-violet' },
-        ].map((stat) => (
-          <div key={stat.label} className="glass p-8 rounded-[2rem] border-white/5 text-center group hover:border-white/10 transition-all">
-            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">{stat.label}</p>
-            <p className={`text-4xl font-black ${stat.color} group-hover:scale-110 transition-transform`}>{stat.value}</p>
-          </div>
-        ))}
-      </section>
+        {/* Categories Bar */}
+        <div className="sticky top-20 z-40 bg-[#020617]/80 backdrop-blur-md -mx-4 px-4 py-4 rounded-b-3xl">
+          <CategoryBar 
+            activeCategory={activeCategory} 
+            onCategoryChange={setActiveCategory} 
+          />
+        </div>
+
+        {/* News Grid */}
+        <NewsGrid category={activeCategory} />
+      </div>
     </DashboardLayout>
   );
 }
