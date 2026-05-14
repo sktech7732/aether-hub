@@ -1,86 +1,189 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Zap, Video, Home, Newspaper } from 'lucide-react';
+import { 
+  Menu, X, Zap, Video, Home, Newspaper, 
+  Search, Facebook, Twitter, Linkedin, Instagram,
+  User, ChevronDown
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WeatherWidget from '../ui/WeatherWidget';
+import CategoryBar from '../ui/CategoryBar';
+import AdBanner from '../ads/AdBanner';
 
 const GlobalNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dateTime, setDateTime] = useState('');
   const pathname = usePathname();
 
+  useEffect(() => {
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    setDateTime(now.toLocaleDateString('en-US', options));
+  }, []);
+
   const navItems = [
-    { name: 'Home', icon: <Home size={20} />, path: '/' },
-    { name: 'ClipForge', icon: <Video size={20} />, path: '/clip-forge' },
+    { name: 'HOME', path: '/' },
+    { name: 'NEWS', path: '/news' },
+    { name: 'EGOV WATCH', path: '#' },
+    { name: 'INTERVIEWS', path: '#' },
+    { name: 'EDITORIALS', path: '#' },
+    { name: 'FEATURES', path: '#' },
+    { name: 'VIDEOS', path: '#' },
+    { name: 'CLIPFORGE', path: '/clip-forge', highlight: true },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[100] px-4 py-3">
-      <div className="max-w-7xl mx-auto glass rounded-2xl border border-white/10 px-4 py-2 flex justify-between items-center backdrop-blur-xl">
-        <div className="flex items-center gap-4">
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-neon-cyan/20 transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Newspaper className="text-white" size={16} />
+    <header className="fixed top-0 left-0 w-full z-[100] flex flex-col bg-black">
+      {/* 1. Top Strip */}
+      <div className="w-full bg-[#0a0a0a] border-b border-white/5 py-1.5 px-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 bg-white/5 px-2 py-0.5 rounded">
+               <span className="text-white">{dateTime}</span>
             </div>
-            <span className="text-lg font-black tracking-tighter text-white hidden sm:inline-block">
-              AETHER<span className="text-neon-cyan">NEWS</span>
-            </span>
-          </Link>
-
-          <div className="hidden md:block h-6 w-px bg-white/10 mx-1" />
+            <div className="hidden lg:flex items-center gap-4">
+              <Link href="#" className="hover:text-white transition-colors">Advertise With Us</Link>
+              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-white transition-colors">Contact Us</Link>
+            </div>
+          </div>
           
-          <WeatherWidget />
-        </div>
-
-        <div className="flex items-center gap-4">
-          {/* Right side can be empty or used for profile/search later */}
-          <div className="px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-[10px] font-bold text-neon-cyan uppercase tracking-widest hidden sm:block">
-            Live Feed
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5 hover:text-white cursor-pointer transition-colors border-r border-white/10 pr-4">
+              <User size={12} />
+              <span>Sign In</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Facebook size={12} className="hover:text-blue-500 cursor-pointer transition-colors" />
+              <Twitter size={12} className="hover:text-sky-400 cursor-pointer transition-colors" />
+              <Linkedin size={12} className="hover:text-blue-600 cursor-pointer transition-colors" />
+              <Instagram size={12} className="hover:text-pink-500 cursor-pointer transition-colors" />
+            </div>
           </div>
         </div>
       </div>
 
+      {/* 2. Main Branding Area */}
+      <div className="w-full bg-black py-6 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
+          <Link href="/" className="flex flex-col group">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-neon-cyan/20">
+                <Newspaper className="text-white" size={28} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-black tracking-tighter text-white leading-none">
+                  AETHER<span className="text-neon-cyan">NEWS</span>
+                </span>
+                <span className="text-[9px] font-black text-slate-500 tracking-[0.4em] uppercase mt-1">Intelligence Network</span>
+              </div>
+            </div>
+          </Link>
+
+          <div className="flex-1 max-w-2xl w-full lg:block">
+            <div className="w-full h-[90px] bg-white/5 border border-white/10 rounded-xl flex items-center justify-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-transparent animate-pulse" />
+              <div className="relative z-10 flex items-center gap-4 px-6">
+                <WeatherWidget />
+                <div className="h-8 w-px bg-white/10" />
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest hidden sm:block">
+                  Premium Ad Space Available
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Navigation Bar */}
+      <div className="w-full bg-[#0a0a0a] border-y border-white/5 shadow-2xl">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <nav className="hidden lg:flex items-center">
+            {navItems.map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.path}
+                className={`
+                  px-5 py-4 text-[11px] font-black tracking-widest transition-all relative group
+                  ${pathname === item.path ? 'text-white bg-white/5' : 'text-slate-400 hover:text-white hover:bg-white/5'}
+                  ${item.highlight ? 'text-neon-cyan' : ''}
+                `}
+              >
+                {item.name}
+                {pathname === item.path && (
+                  <motion.div layoutId="nav-line" className="absolute bottom-0 left-0 w-full h-0.5 bg-neon-cyan" />
+                )}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="lg:hidden flex items-center px-4 py-3 w-full justify-between">
+             <span className="text-[10px] font-bold text-neon-cyan uppercase tracking-widest">Navigation Menu</span>
+             <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2 bg-white/5 rounded-lg">
+                {isOpen ? <X size={20} /> : <Menu size={20} />}
+             </button>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-2 px-6">
+            <button className="p-3 text-slate-400 hover:text-white transition-colors">
+              <Search size={18} />
+            </button>
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-3 transition-colors ${isOpen ? 'text-neon-cyan' : 'text-slate-400 hover:text-white'}`}
+            >
+              <Menu size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile / Full Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full px-4 pt-2"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="w-full bg-[#050505] border-b border-white/10 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto glass rounded-3xl border border-white/10 p-4 space-y-2">
-              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] px-5 py-2">Navigation</p>
-              {navItems.map((item) => {
-                const isActive = pathname === item.path;
-                return (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`
-                      flex items-center gap-4 px-5 py-4 rounded-2xl transition-all
-                      ${isActive ? 'bg-neon-cyan/10 border border-neon-cyan/20 text-white shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'text-slate-400 border border-transparent hover:bg-white/5'}
-                    `}
-                  >
-                    <span className={isActive ? 'text-neon-cyan' : ''}>{item.icon}</span>
-                    <span className="font-bold tracking-wide">{item.name}</span>
-                  </Link>
-                );
-              })}
+            <div className="max-w-7xl mx-auto p-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-black text-neon-cyan uppercase tracking-[0.2em]">Sections</h4>
+                <div className="flex flex-col gap-2">
+                  {navItems.slice(0, 4).map(i => <Link key={i.name} href={i.path} className="text-sm text-slate-400 hover:text-white">{i.name}</Link>)}
+                </div>
+              </div>
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-black text-neon-violet uppercase tracking-[0.2em]">Resources</h4>
+                <div className="flex flex-col gap-2">
+                  {navItems.slice(4).map(i => <Link key={i.name} href={i.path} className="text-sm text-slate-400 hover:text-white">{i.name}</Link>)}
+                </div>
+              </div>
+              <div className="col-span-2">
+                 <div className="glass p-6 rounded-3xl border-white/5 h-full flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg font-black text-white mb-2">Aether News Premium</h4>
+                      <p className="text-xs text-slate-500 leading-relaxed">Subscribe to our newsletter for the latest in AI and Cyberpunk tech updates delivered to your terminal.</p>
+                    </div>
+                    <button className="mt-6 w-full py-3 bg-neon-cyan text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] transition-transform">
+                      Subscribe Now
+                    </button>
+                 </div>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };
 
