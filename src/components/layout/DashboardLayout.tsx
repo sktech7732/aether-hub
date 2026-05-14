@@ -2,6 +2,7 @@
 
 import React from 'react';
 import GlobalNav from './GlobalNav';
+import { VerticalAd } from '@/components/ads/InFeedAds';
 import AdBanner from '@/components/ads/AdBanner';
 import SignatureFooter from './SignatureFooter';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,6 +17,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <GlobalNav />
+      
+      {/* Side Ads */}
+      <VerticalAd side="left" />
+      <VerticalAd side="right" />
 
       <main className="flex-1 relative min-h-screen pt-20">
         <div className="max-w-7xl mx-auto flex flex-col min-h-screen">

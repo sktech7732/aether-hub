@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, RefreshCcw } from 'lucide-react';
+import { HorizontalAd } from '@/components/ads/InFeedAds';
 
 interface NewsItem {
   title: string;
@@ -100,7 +101,10 @@ const NewsGrid = ({ category }: NewsGridProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {news.map((article, idx) => (
-              <NewsCard key={article.link + idx} article={article} />
+              <React.Fragment key={article.link + idx}>
+                <NewsCard article={article} />
+                {(idx + 1) % 2 === 0 && <HorizontalAd />}
+              </React.Fragment>
             ))}
           </AnimatePresence>
         </div>
