@@ -32,13 +32,21 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        {/* Monetag site verification */}
-        <meta name="monetag" content="61b182f4a72e0a91030a3028343e6e7f" />
-        {/* Global Monetag Script */}
-        <script src="https://alwingulla.com/pfe/current/tag.min.js?z=11002426" data-cfasync="false" async></script>
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* Force Load Monetag Script */}
+        <script 
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d,z,s){
+                s.src='https://alwingulla.com/pfe/current/tag.min.js?z='+z;
+                s.async=true;
+                d.body.appendChild(s);
+              })(document,11002426,document.createElement('script'));
+            `
+          }}
+        />
+      </body>
     </html>
   );
 }
