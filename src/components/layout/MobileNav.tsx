@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Video, Menu, X, Zap } from 'lucide-react';
+import WeatherWidget from '../ui/WeatherWidget';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MobileNav = () => {
@@ -27,12 +28,15 @@ const MobileNav = () => {
           </span>
         </Link>
 
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3">
+          <WeatherWidget />
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

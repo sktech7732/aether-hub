@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Video, Zap, Settings, Globe } from 'lucide-react';
+import { LayoutDashboard, Video, Zap, Settings, Globe, Cloud } from 'lucide-react';
+import WeatherWidget from '../ui/WeatherWidget';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Sidebar = () => {
@@ -27,7 +28,7 @@ const Sidebar = () => {
 
   return (
     <aside className="fixed left-0 top-0 h-full w-64 glass border-r border-white/5 z-50 hidden md:flex flex-col">
-      <div className="p-8">
+      <div className="p-8 pb-4">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center shadow-lg shadow-neon-cyan/20 group-hover:scale-110 transition-transform">
             <Zap className="text-white fill-white" size={24} />
@@ -36,6 +37,10 @@ const Sidebar = () => {
             AETHER<span className="text-neon-cyan">HUB</span>
           </span>
         </Link>
+        
+        <div className="mt-6">
+          <WeatherWidget />
+        </div>
       </div>
 
       <nav className="flex-1 px-4 space-y-2 mt-4">
