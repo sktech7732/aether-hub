@@ -24,7 +24,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
       <main className="flex-1 relative min-h-screen pt-[220px]">
         <div className="max-w-5xl mx-auto flex flex-col min-h-screen">
-          <AdBanner />
           <div className="flex-1 p-4 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
