@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <VerticalAd side="right" />
 
       <main className="flex-1 relative min-h-screen pt-[220px]">
-        <div className="max-w-7xl mx-auto flex flex-col min-h-screen">
+        <div className="max-w-5xl mx-auto flex flex-col min-h-screen">
           <AdBanner />
           <div className="flex-1 p-4 md:p-8">
             <AnimatePresence mode="wait">

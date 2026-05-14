@@ -71,14 +71,14 @@ const GlobalNav = () => {
 
       {/* 2. Main Branding Area */}
       <div className="w-full bg-black py-6 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex flex-col group">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-neon-cyan/20">
                 <Newspaper className="text-white" size={28} />
               </div>
               <div className="flex flex-col">
-                <span className="text-3xl font-black tracking-tighter text-white leading-none">
+                <span className="text-3xl font-black tracking-tighter text-white leading-none uppercase">
                   AETHER<span className="text-neon-cyan">NEWS</span>
                 </span>
                 <span className="text-[9px] font-black text-slate-500 tracking-[0.4em] uppercase mt-1">Intelligence Network</span>
@@ -86,16 +86,12 @@ const GlobalNav = () => {
             </div>
           </Link>
 
-          <div className="flex-1 max-w-2xl w-full lg:block">
-            <div className="w-full h-[90px] bg-white/5 border border-white/10 rounded-xl flex items-center justify-center relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-transparent animate-pulse" />
-              <div className="relative z-10 flex items-center gap-4 px-6">
-                <WeatherWidget />
-                <div className="h-8 w-px bg-white/10" />
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest hidden sm:block">
-                  Premium Ad Space Available
-                </span>
-              </div>
+          <div className="flex items-center gap-6">
+            <WeatherWidget />
+            <div className="hidden sm:block h-10 w-px bg-white/10" />
+            <div className="hidden md:flex flex-col items-end">
+              <span className="text-[10px] font-bold text-neon-cyan uppercase tracking-widest">Global Status</span>
+              <span className="text-[9px] font-medium text-slate-500 uppercase tracking-widest mt-0.5">Systems Online // 24/7 Feed</span>
             </div>
           </div>
         </div>
