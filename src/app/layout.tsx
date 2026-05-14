@@ -40,7 +40,7 @@ export default function RootLayout({
           id="monetag-global"
           strategy="afterInteractive"
           src="https://quge5.com/88/tag.min.js"
-          data-zone="239048"
+          data-zone="11002427"
           data-cfasync="false"
         />
       </head>

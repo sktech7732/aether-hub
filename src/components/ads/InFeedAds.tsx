@@ -1,7 +1,10 @@
 "use client";
 
 import React from 'react';
-import { PROP_AD_SCRIPT_URL } from '@/config/ads';
+
+// Using the new In-Page Push Zone ID found in the dashboard
+const BANNER_ZONE_ID = "11006892";
+const AD_SCRIPT_URL = "https://quge5.com/88/tag.min.js";
 
 export const HorizontalAd = () => {
   return (
@@ -11,11 +14,11 @@ export const HorizontalAd = () => {
         <div 
           className="relative z-10 w-full flex justify-center"
           dangerouslySetInnerHTML={{
-            __html: `<script src="${PROP_AD_SCRIPT_URL}" data-zone="239048" async></script>`
+            __html: `<script src="${AD_SCRIPT_URL}" data-zone="${BANNER_ZONE_ID}" async></script>`
           }}
         />
         <div className="absolute top-2 right-4 text-[8px] font-bold text-slate-700 uppercase tracking-widest z-0 opacity-50">
-          Sponsored
+          Intelligence Feed Ad
         </div>
       </div>
     </div>
@@ -31,11 +34,11 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
       <div 
         className="relative z-10 w-full flex justify-center"
         dangerouslySetInnerHTML={{
-          __html: `<script src="${PROP_AD_SCRIPT_URL}" data-zone="239048" async></script>`
+          __html: `<script src="${AD_SCRIPT_URL}" data-zone="${BANNER_ZONE_ID}" async></script>`
         }}
       />
       <div className="relative z-0 text-[9px] font-bold text-slate-700 uppercase tracking-widest rotate-90 whitespace-nowrap opacity-30">
-        Advertisement
+        Vertical Network Ad
       </div>
     </div>
   );
