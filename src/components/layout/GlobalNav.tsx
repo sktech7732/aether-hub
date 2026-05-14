@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   Menu, X, Zap, Video, Home, Newspaper, 
-  Search, Facebook, Twitter, Linkedin, Instagram,
+  Search, Globe, Share2,
   User, ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -62,10 +62,8 @@ const GlobalNav = () => {
               <span>Sign In</span>
             </div>
             <div className="flex items-center gap-3">
-              <Facebook size={12} className="hover:text-blue-500 cursor-pointer transition-colors" />
-              <Twitter size={12} className="hover:text-sky-400 cursor-pointer transition-colors" />
-              <Linkedin size={12} className="hover:text-blue-600 cursor-pointer transition-colors" />
-              <Instagram size={12} className="hover:text-pink-500 cursor-pointer transition-colors" />
+              <Globe size={12} className="hover:text-neon-cyan cursor-pointer transition-colors" />
+              <Share2 size={12} className="hover:text-neon-violet cursor-pointer transition-colors" />
             </div>
           </div>
         </div>
