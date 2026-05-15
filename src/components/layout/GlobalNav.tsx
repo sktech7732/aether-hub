@@ -86,43 +86,25 @@ const GlobalNav = () => {
             </div>
           </Link>
 
-          {/* Header Banner Ad Space - Native 468x60 for Professional Look */}
-          <div className="hidden lg:flex flex-1 justify-center px-8">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-violet/20 blur opacity-0 group-hover:opacity-100 transition duration-500 rounded-lg"></div>
-              <div className="relative w-[468px] h-[60px] flex items-center justify-center">
-                <iframe
-                  title="ad-header-native"
-                  srcDoc={`
-                    <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
-                      <script type="text/javascript">
-                        atOptions = {
-                          'key' : 'be85c43a40a4b872122880c904b9e7b9',
-                          'format' : 'iframe',
-                          'height' : 60,
-                          'width' : 468,
-                          'params' : {}
-                        };
-                        document.write('<script type="text/javascript" src="//www.highperformanceformat.com/be85c43a40a4b872122880c904b9e7b9/invoke.js"><\\/script>');
-                      </script>
-                    </body>
-                  `}
-                  width="468"
-                  height="60"
-                  frameBorder="0"
-                  scrolling="no"
-                />
-              </div>
-            </div>
+          {/* Header Banner - Adsterra Referral GIF */}
+          <div className="hidden lg:flex flex-1 justify-center px-4">
+            <a 
+              href="https://beta.publishers.adsterra.com/referral/qPQE5cMJfT" 
+              rel="nofollow"
+              target="_blank"
+              className="relative group block overflow-hidden rounded-lg border border-white/5 hover:border-neon-cyan/30 transition-all duration-500 shadow-xl shadow-black/50"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-violet/20 blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <img 
+                alt="Adsterra Referral" 
+                src="https://landings-cdn.adsterratech.com/referralProgram/gif/700x90.gif" 
+                className="relative h-[60px] lg:h-[80px] xl:h-[90px] w-auto object-contain"
+              />
+            </a>
           </div>
 
           <div className="flex items-center gap-6 shrink-0">
             <WeatherWidget />
-            <div className="hidden sm:block h-10 w-px bg-white/10" />
-            <div className="hidden md:flex flex-col items-end">
-              <span className="text-[10px] font-bold text-neon-cyan uppercase tracking-widest">Global Status</span>
-              <span className="text-[9px] font-medium text-slate-500 uppercase tracking-widest mt-0.5">Systems Online // 24/7 Feed</span>
-            </div>
           </div>
         </div>
       </div>
