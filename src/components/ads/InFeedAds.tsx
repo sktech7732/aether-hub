@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useId } from 'react';
 
 export const HorizontalAd = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const adKey = 'a85949e71198684afe139f5f7c13701d';
+  const instanceId = useId().replace(/:/g, '');
 
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('script')) {
+      const containerId = `ad-container-${instanceId}`;
+      containerRef.current.id = containerId;
+
       const script1 = document.createElement('script');
       script1.type = 'text/javascript';
       script1.innerHTML = `
@@ -27,7 +31,7 @@ export const HorizontalAd = () => {
       containerRef.current.appendChild(script1);
       containerRef.current.appendChild(script2);
     }
-  }, []);
+  }, [instanceId]);
 
   return (
     <div className="col-span-full w-full py-4 flex justify-center">
@@ -44,12 +48,10 @@ export const HorizontalAd = () => {
 export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const adKey = side === 'left' ? '0a59a5423417ba377ceb1e52a0c7ee66' : '5343a12d3ecc492da6919a8eaccacfdf';
+  const instanceId = useId().replace(/:/g, '');
 
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('script')) {
-      // Clear global atOptions to prevent conflict before setting new ones
-      (window as any).atOptions = undefined;
-
       const script1 = document.createElement('script');
       script1.type = 'text/javascript';
       script1.innerHTML = `
@@ -69,7 +71,7 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
       containerRef.current.appendChild(script1);
       containerRef.current.appendChild(script2);
     }
-  }, [adKey]);
+  }, [adKey, instanceId]);
 
   return (
     <div 

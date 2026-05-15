@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useId } from 'react';
 import { motion } from 'framer-motion';
 
 const SignatureFooter = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const adKey = 'a85949e71198684afe139f5f7c13701d';
+  const instanceId = useId().replace(/:/g, '');
 
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('script')) {
@@ -28,7 +29,7 @@ const SignatureFooter = () => {
       containerRef.current.appendChild(script1);
       containerRef.current.appendChild(script2);
     }
-  }, []);
+  }, [instanceId]);
 
   return (
     <footer className="mt-20 pb-10 flex flex-col items-center justify-center border-t border-white/5 pt-10 w-full">
@@ -51,7 +52,7 @@ const SignatureFooter = () => {
         </div>
       </div>
 
-      {/* Footer Banner Ad - Script Injection */}
+      {/* Footer Banner Ad - Unique ID Strategy */}
       <div className="w-full flex justify-center mt-4">
         <div 
           ref={containerRef}
