@@ -86,31 +86,33 @@ const GlobalNav = () => {
             </div>
           </Link>
 
-          {/* Header Banner Ad Space */}
+          {/* Header Banner Ad Space - Native 468x60 for Professional Look */}
           <div className="hidden lg:flex flex-1 justify-center px-8">
-            <div className="w-full max-w-[468px] h-[60px] bg-white/5 border border-white/10 rounded-lg overflow-hidden relative flex items-center justify-center">
-               <iframe
-                title="ad-header"
-                srcDoc={`
-                  <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
-                    <script type="text/javascript">
-                      atOptions = {
-                        'key' : 'a85949e71198684afe139f5f7c13701d',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                      };
-                      document.write('<script type="text/javascript" src="//www.highperformanceformat.com/a85949e71198684afe139f5f7c13701d/invoke.js"><\\/script>');
-                    </script>
-                  </body>
-                `}
-                width="468"
-                height="60"
-                frameBorder="0"
-                scrolling="no"
-                style={{ transform: 'scale(0.65)', transformOrigin: 'center' }}
-              />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-violet/20 blur opacity-0 group-hover:opacity-100 transition duration-500 rounded-lg"></div>
+              <div className="relative w-[468px] h-[60px] flex items-center justify-center">
+                <iframe
+                  title="ad-header-native"
+                  srcDoc={`
+                    <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
+                      <script type="text/javascript">
+                        atOptions = {
+                          'key' : 'be85c43a40a4b872122880c904b9e7b9',
+                          'format' : 'iframe',
+                          'height' : 60,
+                          'width' : 468,
+                          'params' : {}
+                        };
+                        document.write('<script type="text/javascript" src="//www.highperformanceformat.com/be85c43a40a4b872122880c904b9e7b9/invoke.js"><\\/script>');
+                      </script>
+                    </body>
+                  `}
+                  width="468"
+                  height="60"
+                  frameBorder="0"
+                  scrolling="no"
+                />
+              </div>
             </div>
           </div>
 
