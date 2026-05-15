@@ -58,7 +58,7 @@ const GlobalNav = () => {
               >
                 Advertise With Us
               </Link>
-              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="#" className="hover:text-white transition-colors">Contact Us</Link>
             </div>
           </div>
