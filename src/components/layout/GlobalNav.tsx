@@ -72,7 +72,7 @@ const GlobalNav = () => {
       {/* 2. Main Branding Area */}
       <div className="w-full bg-black py-6 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="flex flex-col group">
+          <Link href="/" className="flex flex-col group shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-neon-cyan/20">
                 <Newspaper className="text-white" size={28} />
@@ -86,7 +86,35 @@ const GlobalNav = () => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-6">
+          {/* Header Banner Ad Space */}
+          <div className="hidden lg:flex flex-1 justify-center px-8">
+            <div className="w-full max-w-[468px] h-[60px] bg-white/5 border border-white/10 rounded-lg overflow-hidden relative flex items-center justify-center">
+               <iframe
+                title="ad-header"
+                srcDoc={`
+                  <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
+                    <script type="text/javascript">
+                      atOptions = {
+                        'key' : 'a85949e71198684afe139f5f7c13701d',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                      };
+                      document.write('<script type="text/javascript" src="//www.highperformanceformat.com/a85949e71198684afe139f5f7c13701d/invoke.js"><\\/script>');
+                    </script>
+                  </body>
+                `}
+                width="468"
+                height="60"
+                frameBorder="0"
+                scrolling="no"
+                style={{ transform: 'scale(0.65)', transformOrigin: 'center' }}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-6 shrink-0">
             <WeatherWidget />
             <div className="hidden sm:block h-10 w-px bg-white/10" />
             <div className="hidden md:flex flex-col items-end">
