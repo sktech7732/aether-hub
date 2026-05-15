@@ -97,7 +97,7 @@ const GlobalNav = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-violet/20 blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
               <img 
                 alt="Adsterra Referral" 
-                src="https://landings-cdn.adsterratech.com/referralProgram/gif/700x90.gif" 
+                src="https://landings-cdn.adsterratech.com/referralBanners/gif/700x90_adsterra_reff.gif" 
                 className="relative h-[60px] lg:h-[80px] xl:h-[90px] w-auto object-contain"
               />
             </a>
