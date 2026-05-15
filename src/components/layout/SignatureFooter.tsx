@@ -1,15 +1,39 @@
 "use client";
 
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const SignatureFooter = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const adKey = 'a85949e71198684afe139f5f7c13701d';
+
+  useEffect(() => {
+    if (containerRef.current && !containerRef.current.querySelector('script')) {
+      const script1 = document.createElement('script');
+      script1.type = 'text/javascript';
+      script1.innerHTML = `
+        atOptions = {
+          'key' : '${adKey}',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      `;
+      
+      const script2 = document.createElement('script');
+      script2.type = 'text/javascript';
+      script2.src = `//www.highperformanceformat.com/${adKey}/invoke.js`;
+      
+      containerRef.current.appendChild(script1);
+      containerRef.current.appendChild(script2);
+    }
+  }, []);
 
   return (
     <footer className="mt-20 pb-10 flex flex-col items-center justify-center border-t border-white/5 pt-10 w-full">
       <div className="text-center group mb-8">
         <div className="relative inline-block">
-          {/* Neon Glow behind the name */}
           <div className="absolute -inset-4 bg-gradient-to-r from-neon-cyan/20 to-neon-violet/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
           
           <motion.div 
@@ -27,32 +51,13 @@ const SignatureFooter = () => {
         </div>
       </div>
 
-      {/* Footer Banner Ad */}
+      {/* Footer Banner Ad - Script Injection */}
       <div className="w-full flex justify-center mt-4">
-        <div className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl overflow-hidden relative flex items-center justify-center">
+        <div 
+          ref={containerRef}
+          className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl overflow-hidden relative flex items-center justify-center shadow-lg shadow-black/50"
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-neon-violet/5 opacity-50 pointer-events-none" />
-          <iframe
-            title="ad-footer"
-            srcDoc={`
-              <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
-                <script type="text/javascript">
-                  atOptions = {
-                    'key' : '${adKey}',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                  };
-                  document.write('<script type="text/javascript" src="//www.highperformanceformat.com/${adKey}/invoke.js"><\\/script>');
-                </script>
-              </body>
-            `}
-            width="728"
-            height="90"
-            frameBorder="0"
-            scrolling="no"
-            className="relative z-10"
-          />
         </div>
       </div>
       
