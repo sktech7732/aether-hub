@@ -45,13 +45,16 @@ export const HorizontalAd = () => {
 export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Use unique keys for left and right to prevent atOptions conflict
+  const adKey = side === 'left' ? '0a59a5423417ba377ceb1e52a0c7ee66' : '02bbb5668ab5585962132f467ca4b178';
+
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('script')) {
       const script1 = document.createElement('script');
       script1.type = 'text/javascript';
       script1.innerHTML = `
         atOptions = {
-          'key' : '0a59a5423417ba377ceb1e52a0c7ee66',
+          'key' : '${adKey}',
           'format' : 'iframe',
           'height' : 600,
           'width' : 160,
@@ -61,12 +64,12 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
       
       const script2 = document.createElement('script');
       script2.type = 'text/javascript';
-      script2.src = '//www.highperformanceformat.com/0a59a5423417ba377ceb1e52a0c7ee66/invoke.js';
+      script2.src = '//www.highperformanceformat.com/${adKey}/invoke.js';
       
       containerRef.current.appendChild(script1);
       containerRef.current.appendChild(script2);
     }
-  }, []);
+  }, [side, adKey]);
 
   return (
     <div 
