@@ -70,7 +70,7 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
 
   return (
     <div 
-      className={`hidden 2xl:flex fixed top-48 ${side === 'left' ? 'left-4' : 'right-4'} w-[160px] h-[600px] bg-white/5 border border-white/10 rounded-xl flex-col items-center justify-center overflow-hidden z-40 shadow-2xl shadow-black`}
+      className={`hidden xl:flex fixed top-48 ${side === 'left' ? 'left-4' : 'right-4'} w-[160px] h-[600px] bg-white/5 border border-white/10 rounded-xl flex-col items-center justify-center overflow-hidden z-40 shadow-2xl shadow-black`}
     >
       <div 
         ref={containerRef}
