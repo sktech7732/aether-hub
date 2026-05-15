@@ -50,7 +50,14 @@ const GlobalNav = () => {
                <span className="text-white">{dateTime}</span>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <Link href="#" className="hover:text-white transition-colors">Advertise With Us</Link>
+              <Link 
+                href="https://beta.publishers.adsterra.com/referral/qPQE5cMJfT" 
+                target="_blank" 
+                rel="nofollow" 
+                className="hover:text-white transition-colors"
+              >
+                Advertise With Us
+              </Link>
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="#" className="hover:text-white transition-colors">Contact Us</Link>
             </div>
