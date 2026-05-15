@@ -1,36 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useId } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const SignatureFooter = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const adKey = 'a85949e71198684afe139f5f7c13701d';
-  const instanceId = useId().replace(/:/g, '');
-
-  useEffect(() => {
-    if (containerRef.current && !containerRef.current.querySelector('script')) {
-      const script1 = document.createElement('script');
-      script1.type = 'text/javascript';
-      script1.innerHTML = `
-        atOptions = {
-          'key' : '${adKey}',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      `;
-      
-      const script2 = document.createElement('script');
-      script2.type = 'text/javascript';
-      script2.src = `//www.highperformanceformat.com/${adKey}/invoke.js`;
-      
-      containerRef.current.appendChild(script1);
-      containerRef.current.appendChild(script2);
-    }
-  }, [instanceId]);
-
   return (
     <footer className="mt-20 pb-10 flex flex-col items-center justify-center border-t border-white/5 pt-10 w-full">
       <div className="text-center group mb-8">
@@ -52,12 +25,18 @@ const SignatureFooter = () => {
         </div>
       </div>
 
-      {/* Footer Banner Ad - Unique ID Strategy */}
+      {/* Footer Banner Ad - Static Iframe Method */}
       <div className="w-full flex justify-center mt-4">
-        <div 
-          ref={containerRef}
-          className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl overflow-hidden relative flex items-center justify-center shadow-lg shadow-black/50"
-        >
+        <div className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl overflow-hidden relative flex items-center justify-center shadow-lg shadow-black/50">
+          <iframe 
+            src="/ads/h-banner.html"
+            width="728"
+            height="90"
+            frameBorder="0"
+            scrolling="no"
+            title="ad-footer"
+            className="relative z-10"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-neon-violet/5 opacity-50 pointer-events-none" />
         </div>
       </div>

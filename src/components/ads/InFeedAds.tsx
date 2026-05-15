@@ -1,44 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, useId } from 'react';
+import React from 'react';
 
 export const HorizontalAd = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const adKey = 'a85949e71198684afe139f5f7c13701d';
-  const instanceId = useId().replace(/:/g, '');
-
-  useEffect(() => {
-    if (containerRef.current && !containerRef.current.querySelector('script')) {
-      const containerId = `ad-container-${instanceId}`;
-      containerRef.current.id = containerId;
-
-      const script1 = document.createElement('script');
-      script1.type = 'text/javascript';
-      script1.innerHTML = `
-        atOptions = {
-          'key' : '${adKey}',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      `;
-      
-      const script2 = document.createElement('script');
-      script2.type = 'text/javascript';
-      script2.src = `//www.highperformanceformat.com/${adKey}/invoke.js`;
-      
-      containerRef.current.appendChild(script1);
-      containerRef.current.appendChild(script2);
-    }
-  }, [instanceId]);
-
   return (
     <div className="col-span-full w-full py-4 flex justify-center">
-      <div 
-        ref={containerRef}
-        className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl flex items-center justify-center overflow-hidden relative shadow-lg shadow-black/50"
-      >
+      <div className="w-full max-w-[728px] min-h-[90px] bg-white/5 border border-white/10 rounded-xl flex items-center justify-center overflow-hidden relative shadow-lg shadow-black/50">
+        <iframe 
+          src="/ads/h-banner.html"
+          width="728"
+          height="90"
+          frameBorder="0"
+          scrolling="no"
+          title="ad-h"
+          className="relative z-10"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-neon-violet/5 opacity-50 pointer-events-none" />
       </div>
     </div>
@@ -46,39 +22,20 @@ export const HorizontalAd = () => {
 };
 
 export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const adKey = side === 'left' ? '0a59a5423417ba377ceb1e52a0c7ee66' : '5343a12d3ecc492da6919a8eaccacfdf';
-  const instanceId = useId().replace(/:/g, '');
-
-  useEffect(() => {
-    if (containerRef.current && !containerRef.current.querySelector('script')) {
-      const script1 = document.createElement('script');
-      script1.type = 'text/javascript';
-      script1.innerHTML = `
-        atOptions = {
-          'key' : '${adKey}',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      `;
-      
-      const script2 = document.createElement('script');
-      script2.type = 'text/javascript';
-      script2.src = `//www.highperformanceformat.com/${adKey}/invoke.js`;
-      
-      containerRef.current.appendChild(script1);
-      containerRef.current.appendChild(script2);
-    }
-  }, [adKey, instanceId]);
-
   return (
     <div 
       className={`hidden xl:flex fixed top-48 ${side === 'left' ? 'left-4' : 'right-4'} w-[160px] h-[600px] bg-white/5 border border-white/10 rounded-xl flex-col items-center justify-center overflow-hidden z-40 shadow-2xl shadow-black`}
     >
+      <iframe 
+        src={side === 'left' ? "/ads/v-left.html" : "/ads/v-right.html"}
+        width="160"
+        height="600"
+        frameBorder="0"
+        scrolling="no"
+        title={`ad-v-${side}`}
+        className="relative z-10"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-neon-violet/5 opacity-50 pointer-events-none" />
-      <div ref={containerRef} className="relative z-10 w-full h-full flex items-center justify-center" />
     </div>
   );
 };
