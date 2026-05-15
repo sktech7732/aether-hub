@@ -34,18 +34,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
-        {/* Force Load Monetag Script */}
-        <script 
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(d,z,s){
-                s.src='https://alwingulla.com/pfe/current/tag.min.js?z='+z;
-                s.async=true;
-                d.body.appendChild(s);
-              })(document,11002426,document.createElement('script'));
-            `
-          }}
-        />
       </body>
     </html>
   );
