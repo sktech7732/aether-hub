@@ -46,7 +46,7 @@ export const VerticalAd = ({ side }: { side: 'left' | 'right' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Use unique keys for left and right to prevent atOptions conflict
-  const adKey = side === 'left' ? '0a59a5423417ba377ceb1e52a0c7ee66' : '02bbb5668ab5585962132f467ca4b178';
+  const adKey = side === 'left' ? '0a59a5423417ba377ceb1e52a0c7ee66' : '5343a12d3ecc492da6919a8eaccacfdf';
 
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('script')) {
