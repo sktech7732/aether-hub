@@ -131,6 +131,8 @@ const GlobalNav = () => {
               <Link 
                 key={item.name} 
                 href={item.path}
+                target={item.path.startsWith('http') ? "_blank" : undefined}
+                rel={item.path.startsWith('http') ? "nofollow" : undefined}
                 className={`
                   px-5 py-4 text-[11px] font-black tracking-widest transition-all relative group
                   ${pathname === item.path ? 'text-white bg-white/5' : 'text-slate-400 hover:text-white hover:bg-white/5'}
@@ -179,13 +181,33 @@ const GlobalNav = () => {
               <div className="space-y-4">
                 <h4 className="text-[10px] font-black text-neon-cyan uppercase tracking-[0.2em]">Sections</h4>
                 <div className="flex flex-col gap-2">
-                  {navItems.slice(0, 4).map(i => <Link key={i.name} href={i.path} className="text-sm text-slate-400 hover:text-white">{i.name}</Link>)}
+                  {navItems.slice(0, 4).map(i => (
+                    <Link 
+                      key={i.name} 
+                      href={i.path} 
+                      target={i.path.startsWith('http') ? "_blank" : undefined}
+                      rel={i.path.startsWith('http') ? "nofollow" : undefined}
+                      className="text-sm text-slate-400 hover:text-white"
+                    >
+                      {i.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
               <div className="space-y-4">
                 <h4 className="text-[10px] font-black text-neon-violet uppercase tracking-[0.2em]">Resources</h4>
                 <div className="flex flex-col gap-2">
-                  {navItems.slice(4).map(i => <Link key={i.name} href={i.path} className="text-sm text-slate-400 hover:text-white">{i.name}</Link>)}
+                  {navItems.slice(4).map(i => (
+                    <Link 
+                      key={i.name} 
+                      href={i.path} 
+                      target={i.path.startsWith('http') ? "_blank" : undefined}
+                      rel={i.path.startsWith('http') ? "nofollow" : undefined}
+                      className="text-sm text-slate-400 hover:text-white"
+                    >
+                      {i.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
               <div className="col-span-2">
