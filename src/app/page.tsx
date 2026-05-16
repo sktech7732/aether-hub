@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import CategoryBar from '@/components/ui/CategoryBar';
 import NewsGrid from '@/components/ui/NewsGrid';
@@ -50,7 +50,9 @@ export default function AetherNews() {
         </div>
 
         {/* News Grid */}
-        <NewsGrid category={activeCategory} />
+        <Suspense fallback={<div className="text-center py-20 text-slate-500 uppercase tracking-widest text-xs font-bold">Synchronizing Feed...</div>}>
+          <NewsGrid category={activeCategory} />
+        </Suspense>
       </div>
     </DashboardLayout>
   );
