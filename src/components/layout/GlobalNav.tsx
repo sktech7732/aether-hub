@@ -32,11 +32,11 @@ const GlobalNav = () => {
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'NEWS', path: '/news' },
-    { name: 'EGOV WATCH', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
-    { name: 'INTERVIEWS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
-    { name: 'EDITORIALS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
-    { name: 'FEATURES', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
-    { name: 'VIDEOS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
+    { name: 'EGOV WATCH', path: 'https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8' },
+    { name: 'INTERVIEWS', path: 'https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8' },
+    { name: 'EDITORIALS', path: 'https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8' },
+    { name: 'FEATURES', path: 'https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8' },
+    { name: 'VIDEOS', path: 'https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8' },
     { name: 'CLIPFORGE', path: '/clip-forge', highlight: true },
   ];
 
@@ -51,7 +51,7 @@ const GlobalNav = () => {
             </div>
             <div className="hidden lg:flex items-center gap-4">
               <Link 
-                href="https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3" 
+                href="https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8" 
                 target="_blank" 
                 rel="nofollow" 
                 className="hover:text-white transition-colors"
@@ -60,7 +60,7 @@ const GlobalNav = () => {
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link 
-                href="https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3" 
+                href="https://www.effectivecpmnetwork.com/phwgemcwfw?key=26f9cd0f62e03c162f8bc4e619401db8" 
                 target="_blank" 
                 rel="nofollow" 
                 className="hover:text-white transition-colors"
