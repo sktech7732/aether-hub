@@ -6,6 +6,7 @@ import CategoryBar from '@/components/ui/CategoryBar';
 import NewsGrid from '@/components/ui/NewsGrid';
 import { Sparkles } from 'lucide-react';
 import HeroSlider from '@/components/ui/HeroSlider';
+import { Suspense } from 'react';
 
 export default function AetherNews() {
   const [activeCategory, setActiveCategory] = useState('tech');
@@ -25,7 +26,9 @@ export default function AetherNews() {
         </div>
 
         {/* News Grid */}
-        <NewsGrid category={activeCategory} />
+        <Suspense fallback={<div className="text-center py-20 text-slate-500 uppercase tracking-widest text-xs font-bold">Synchronizing Feed...</div>}>
+          <NewsGrid category={activeCategory} />
+        </Suspense>
       </div>
     </DashboardLayout>
   );

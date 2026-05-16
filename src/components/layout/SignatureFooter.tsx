@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Send, Github, Twitter, Linkedin, Radio } from 'lucide-react';
+import { Send, Globe } from 'lucide-react';
 
 const SignatureFooter = () => {
   return (
@@ -35,7 +35,7 @@ const SignatureFooter = () => {
       {/* Brand & Socials */}
       <div className="flex flex-col items-center space-y-8 w-full">
         <div className="flex gap-6">
-          {[Github, Twitter, Linkedin, Radio].map((Icon, i) => (
+          {[Globe].map((Icon, i) => (
             <motion.a
               key={i}
               href="#"
