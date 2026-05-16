@@ -9,18 +9,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import BackgroundEffects from '../ui/BackgroundEffects';
 
+import { HorizontalAd } from '@/components/ads/InFeedAds';
+
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="min-h-screen bg-black text-slate-100 flex flex-col overflow-x-hidden">
-      <BackgroundEffects />
-
+    <div className="min-h-screen bg-[#020617] text-slate-100 flex flex-col overflow-x-hidden">
       <GlobalNav />
       
-      {/* Side Ads */}
-      <VerticalAd side="left" />
-      <VerticalAd side="right" />
+      {/* Top Banner Ad - Always Visible */}
+      <div className="w-full flex justify-center py-4 bg-black/20 border-b border-white/5 pt-[220px]">
+        <HorizontalAd />
+      </div>
 
-      <main className="flex-1 relative min-h-screen pt-[220px]">
+      <main className="flex-1 relative min-h-screen">
         <div className="max-w-5xl mx-auto flex flex-col min-h-screen">
           <div className="flex-1 p-4 md:p-8">
             <AnimatePresence mode="wait">

@@ -124,28 +124,6 @@ const GlobalNav = () => {
           </div>
         </div>
       </div>
-      {/* 2.5 Breaking News Ticker */}
-      <div className="w-full bg-[#050505] border-b border-white/5 py-2 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto flex items-center gap-4 px-4">
-          <div className="flex items-center gap-2 shrink-0 bg-red-600 px-3 py-1 rounded text-[10px] font-black text-white uppercase tracking-tighter animate-pulse z-10">
-            <Zap size={10} fill="currentColor" />
-            Breaking News
-          </div>
-          <div className="relative flex-1 overflow-hidden h-4">
-            <motion.div 
-              animate={{ x: [1000, -2000] }}
-              transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-              className="flex items-center gap-12 whitespace-nowrap text-[11px] font-bold text-slate-300 uppercase tracking-widest"
-            >
-              <span className="flex items-center gap-2 italic">Aether AI detects massive data spike in Neo-Tokyo network sector 7 //</span>
-              <span className="flex items-center gap-2 italic text-neon-cyan">New Cyber-Automotive prototype revealed in Berlin Tech Summit //</span>
-              <span className="flex items-center gap-2 italic">Intelligence Network: Privacy protocols updated for all users //</span>
-              <span className="flex items-center gap-2 italic text-neon-violet">Global economy shifts towards decentralized neural credits //</span>
-              <span className="flex items-center gap-2 italic">Weather Alert: Ion storms predicted over Northern Cyber-Districts //</span>
-            </motion.div>
-          </div>
-        </div>
-      </div>
       <div className="w-full bg-[#0a0a0a] border-y border-white/5 shadow-2xl">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <nav className="hidden lg:flex items-center">

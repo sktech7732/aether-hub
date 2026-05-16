@@ -7,31 +7,6 @@ import { Send, Globe } from 'lucide-react';
 const SignatureFooter = () => {
   return (
     <footer className="mt-32 pb-12 flex flex-col items-center justify-center border-t border-white/5 pt-20 w-full space-y-16">
-      {/* High-Tech Newsletter Box */}
-      <div className="w-full max-w-2xl px-4">
-        <div className="glass p-10 rounded-[3rem] border-white/5 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-neon-cyan/5 blur-3xl" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 space-y-2 text-center md:text-left">
-              <h4 className="text-2xl font-black text-white uppercase tracking-tighter">Stay Connected</h4>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Join the Aether Intelligence Stream</p>
-            </div>
-            
-            <div className="flex w-full md:w-auto gap-2">
-              <input 
-                type="email" 
-                placeholder="terminal@intel.com"
-                className="bg-white/5 border border-white/10 rounded-2xl px-6 py-3 text-xs text-white focus:outline-none focus:border-neon-cyan/50 flex-1 md:w-64"
-              />
-              <button className="p-4 bg-neon-cyan text-black rounded-2xl hover:scale-105 transition-transform">
-                <Send size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Brand & Socials */}
       <div className="flex flex-col items-center space-y-8 w-full">
         <div className="flex gap-6">
