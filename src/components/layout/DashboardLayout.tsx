@@ -8,11 +8,13 @@ import SignatureFooter from './SignatureFooter';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import BackgroundEffects from '../ui/BackgroundEffects';
+import CustomCursor from '../ui/CustomCursor';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-black text-slate-100 flex flex-col overflow-x-hidden">
       <BackgroundEffects />
+      <CustomCursor />
 
       <GlobalNav />
       
