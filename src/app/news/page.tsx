@@ -27,8 +27,6 @@ export default function NewsArchive() {
           </p>
         </header>
 
-        <HorizontalAd />
-
         <div className="sticky top-20 z-40 bg-black/80 backdrop-blur-md -mx-4 px-4 py-4 rounded-b-3xl border-b border-white/5">
           <CategoryBar 
             activeCategory={activeCategory} 

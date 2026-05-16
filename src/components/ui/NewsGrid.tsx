@@ -88,27 +88,39 @@ const NewsGrid = ({ category }: NewsGridProps) => {
       </div>
 
       {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 gap-4">
-          <Loader2 size={40} className="text-neon-cyan animate-spin" />
-          <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Scanning the Matrix...</p>
+        <div className="flex flex-col items-center justify-center py-32 gap-6">
+          <Loader2 size={48} className="text-neon-cyan animate-spin" />
+          <p className="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Intelligence Network...</p>
         </div>
       ) : error ? (
-        <div className="glass rounded-3xl border border-red-500/20 p-10 text-center">
-          <p className="text-red-400 font-bold">{error}</p>
+        <div className="glass rounded-[2rem] border border-red-500/20 p-16 text-center space-y-6">
+          <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto border border-red-500/20">
+            <RefreshCcw size={24} className="text-red-500" />
+          </div>
+          <p className="text-red-400 font-bold uppercase tracking-widest text-sm">{error}</p>
           <button 
             onClick={fetchNews}
-            className="mt-4 px-6 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all"
+            className="px-10 py-3 rounded-2xl bg-red-500 text-white text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-red-500/20"
           >
-            Retry
+            Re-Synchronize Feed
           </button>
         </div>
+      ) : news.length === 0 ? (
+        <div className="glass rounded-[2rem] border border-white/5 p-20 text-center space-y-4">
+          <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No Intel Found in this Sector</p>
+          <button onClick={fetchNews} className="text-neon-cyan text-[10px] font-black uppercase tracking-widest hover:underline">Retry Scan</button>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {news.map((article, idx) => (
               <React.Fragment key={article.link + idx}>
                 <NewsCard article={article} />
-                {(idx + 1) % 6 === 0 && <HorizontalAd />}
+                {(idx + 1) % 6 === 0 && (
+                  <div className="col-span-full py-8">
+                    <HorizontalAd />
+                  </div>
+                )}
               </React.Fragment>
             ))}
           </AnimatePresence>
