@@ -68,11 +68,10 @@ const NewsCard = ({ article }: { article: NewsItem }) => {
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto relative group/btn overflow-hidden flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:border-neon-cyan"
+          className="mt-auto relative group/btn overflow-hidden flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest transition-all hover:border-neon-cyan hover:bg-neon-cyan/10"
         >
-          <div className="absolute inset-0 bg-neon-cyan opacity-0 group-hover/btn:opacity-10 transition-opacity" />
-          <span className="relative z-10">Sync Terminal</span>
-          <ExternalLink size={14} className="relative z-10" />
+          <span className="relative z-10">Read More</span>
+          <ExternalLink size={14} className="relative z-10 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
         </a>
       </div>
 
