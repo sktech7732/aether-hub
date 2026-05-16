@@ -32,11 +32,11 @@ const GlobalNav = () => {
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'NEWS', path: '/news' },
-    { name: 'EGOV WATCH', path: '#' },
-    { name: 'INTERVIEWS', path: '#' },
-    { name: 'EDITORIALS', path: '#' },
-    { name: 'FEATURES', path: '#' },
-    { name: 'VIDEOS', path: '#' },
+    { name: 'EGOV WATCH', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
+    { name: 'INTERVIEWS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
+    { name: 'EDITORIALS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
+    { name: 'FEATURES', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
+    { name: 'VIDEOS', path: 'https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3' },
     { name: 'CLIPFORGE', path: '/clip-forge', highlight: true },
   ];
 
@@ -51,7 +51,7 @@ const GlobalNav = () => {
             </div>
             <div className="hidden lg:flex items-center gap-4">
               <Link 
-                href="https://beta.publishers.adsterra.com/referral/qPQE5cMJfT" 
+                href="https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3" 
                 target="_blank" 
                 rel="nofollow" 
                 className="hover:text-white transition-colors"
@@ -59,7 +59,14 @@ const GlobalNav = () => {
                 Advertise With Us
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white transition-colors">Contact Us</Link>
+              <Link 
+                href="https://www.effectivecpmnetwork.com/d2d9008e51b0cc9d2a3e79049f29aa3" 
+                target="_blank" 
+                rel="nofollow" 
+                className="hover:text-white transition-colors"
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
           
