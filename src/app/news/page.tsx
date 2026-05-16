@@ -5,6 +5,7 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 import NewsGrid from '@/components/ui/NewsGrid';
 import CategoryBar from '@/components/ui/CategoryBar';
 import { Newspaper } from 'lucide-react';
+import { HorizontalAd } from '@/components/ads/InFeedAds';
 
 export default function NewsArchive() {
   const [activeCategory, setActiveCategory] = useState('tech');
@@ -25,6 +26,8 @@ export default function NewsArchive() {
             Deciphering the global matrix // 24/7 Intel Stream
           </p>
         </header>
+
+        <HorizontalAd />
 
         <div className="sticky top-20 z-40 bg-black/80 backdrop-blur-md -mx-4 px-4 py-4 rounded-b-3xl border-b border-white/5">
           <CategoryBar 

@@ -7,6 +7,7 @@ import NewsGrid from '@/components/ui/NewsGrid';
 import { Sparkles } from 'lucide-react';
 import HeroSlider from '@/components/ui/HeroSlider';
 import { Suspense } from 'react';
+import { HorizontalAd } from '@/components/ads/InFeedAds';
 
 export default function AetherNews() {
   const [activeCategory, setActiveCategory] = useState('tech');
@@ -16,6 +17,9 @@ export default function AetherNews() {
       <div className="space-y-10">
         {/* Dynamic Hero Slider */}
         <HeroSlider />
+
+        {/* Fixed Top Ad */}
+        <HorizontalAd />
 
         {/* Categories Bar */}
         <div className="sticky top-20 z-40 bg-[#020617]/80 backdrop-blur-md -mx-4 px-4 py-3 rounded-b-2xl">
