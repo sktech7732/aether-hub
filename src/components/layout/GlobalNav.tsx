@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { 
   Menu, X, Zap, Video, Home, Newspaper, 
   Search, Globe, Share2,
@@ -15,8 +15,10 @@ import AdBanner from '../ads/AdBanner';
 
 const GlobalNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [dateTime, setDateTime] = useState('');
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const now = new Date();
@@ -175,9 +177,30 @@ const GlobalNav = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-2 px-6">
-            <button className="p-3 text-slate-400 hover:text-white transition-colors">
-              <Search size={18} />
-            </button>
+            <div className="relative flex items-center">
+              <motion.input
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ 
+                  width: isSearchOpen ? 200 : 0, 
+                  opacity: isSearchOpen ? 1 : 0,
+                  marginLeft: isSearchOpen ? 12 : 0
+                }}
+                placeholder="Search Intelligence..."
+                className="bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs text-white placeholder:text-slate-600 focus:outline-none focus:border-neon-cyan/50"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const query = (e.target as HTMLInputElement).value;
+                    router.push(`/?q=${encodeURIComponent(query)}`);
+                  }
+                }}
+              />
+              <button 
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                className={`p-3 transition-colors ${isSearchOpen ? 'text-neon-cyan' : 'text-slate-400 hover:text-white'}`}
+              >
+                <Search size={18} />
+              </button>
+            </div>
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className={`p-3 transition-colors ${isOpen ? 'text-neon-cyan' : 'text-slate-400 hover:text-white'}`}

@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, RefreshCcw } from 'lucide-react';
 import { HorizontalAd } from '@/components/ads/InFeedAds';
 
+import { useSearchParams } from 'next/navigation';
+
 interface NewsItem {
   title: string;
   link: string;
@@ -19,6 +21,8 @@ interface NewsGridProps {
 }
 
 const NewsGrid = ({ category }: NewsGridProps) => {
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('q');
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,7 +40,8 @@ const NewsGrid = ({ category }: NewsGridProps) => {
         gaming: 'gaming industry'
       };
 
-      const query = queryMap[category] || 'technology';
+      // Priority to search query, then category
+      const query = searchQuery || queryMap[category] || 'technology';
       const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en`;
       const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
@@ -65,7 +70,7 @@ const NewsGrid = ({ category }: NewsGridProps) => {
 
   useEffect(() => {
     fetchNews();
-  }, [category]);
+  }, [category, searchQuery]);
 
   return (
     <div className="space-y-8">

@@ -41,3 +41,31 @@ body {
   border: 1px solid var(--neon-violet);
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
 }
+
+/* Custom Neon Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-violet));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Cyberpunk Text Glow */
+.text-glow-cyan {
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.text-glow-violet {
+  text-shadow: 0 0 10px var(--neon-violet);
+}
